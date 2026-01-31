@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import PriorityDropdown from './PriorityDropdown';
 import TagInput from './TagInput';
 import DateTimePicker from './DateTimePicker';
-import RecurrenceSelector from './RecurrenceSelector';
+import RecurrenceSelector, { RecurrenceState, defaultRecurrence } from './RecurrenceSelector';
 import ReminderInput from './ReminderInput';
 
 interface Tag {
@@ -14,26 +14,17 @@ interface Tag {
   color: string;
 }
 
-interface Recurrence {
-  enabled: boolean;
-  pattern: 'daily' | 'weekly' | 'monthly';
-  interval: number;
-  daysOfWeek: number[];
-  dayOfMonth: number;
-  endDate: string | null;
-}
-
 interface TaskFormData {
   title: string;
   description: string;
-  priority: string;
+  priority: 'low' | 'medium' | 'high';
   tags: string[];
   tagIds: string[];
   dueDate: string;
   dueTime: string;
   reminderDate: string;
   reminderTime: string;
-  recurrence: Recurrence;
+  recurrence: RecurrenceState;
 }
 
 interface TaskFormProps {
@@ -55,14 +46,7 @@ export function TaskForm({ onSubmit, onCancel, initialData, availableTags = [], 
     dueTime: initialData?.dueTime || '',
     reminderDate: initialData?.reminderDate || '',
     reminderTime: initialData?.reminderTime || '',
-    recurrence: initialData?.recurrence || {
-      enabled: false,
-      pattern: 'daily',
-      interval: 1,
-      daysOfWeek: [],
-      dayOfMonth: 1,
-      endDate: null,
-    },
+    recurrence: initialData?.recurrence || defaultRecurrence,
   });
   const [loading, setLoading] = useState(false);
 
@@ -149,9 +133,11 @@ export function TaskForm({ onSubmit, onCancel, initialData, availableTags = [], 
 
       {/* Reminder */}
       <ReminderInput
-        reminderDate={data.reminderDate}
-        reminderTime={data.reminderTime}
+        enabled={!!data.reminderDate}
+        onEnabledChange={(enabled) => setData({ ...data, reminderDate: enabled ? data.reminderDate || new Date().toISOString().split('T')[0] : '', reminderTime: enabled ? data.reminderTime : '' })}
+        date={data.reminderDate}
         onDateChange={(reminderDate) => setData({ ...data, reminderDate })}
+        time={data.reminderTime}
         onTimeChange={(reminderTime) => setData({ ...data, reminderTime })}
       />
 
