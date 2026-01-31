@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { PriorityDropdown } from './PriorityDropdown';
-import { TagInput } from './TagInput';
-import { DateTimePicker } from './DateTimePicker';
-import { RecurrenceSelector } from './RecurrenceSelector';
-import { ReminderInput } from './ReminderInput';
+import PriorityDropdown from './PriorityDropdown';
+import TagInput from './TagInput';
+import DateTimePicker from './DateTimePicker';
+import RecurrenceSelector from './RecurrenceSelector';
+import ReminderInput from './ReminderInput';
 
 interface Tag {
   id: string;
