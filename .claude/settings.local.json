@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Skill(sp.plan)",
+      "Bash(alembic init:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File:*)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(pip install:*)",
+      "Bash(rm:*)",
+      "Bash(git fetch:*)",
+      "Bash(python:*)",
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfix: replace CORS middleware with custom handler for proper preflight\n\n- Remove SlowAPIMiddleware that was blocking OPTIONS requests\n- Implement custom CORS middleware that handles OPTIONS immediately\n- Return 200 with proper headers for preflight before any other processing\n- Keep rate limiter available per-route instead of global middleware\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git checkout:*)",
+      "Skill(sp.tasks)",
+      "Skill(sp.implement)",
+      "Bash(tree:*)",
+      "Bash(helm version:*)",
+      "Bash(go version:*)",
+      "Bash(where.exe:*)",
+      "Bash(cmd.exe /c \"where helm\")",
+      "Bash(powershell.exe -Command \"go version\")",
+      "Bash(powershell.exe -Command:*)",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File \"D:\\\\Izma folder\\\\Governer sindh course\\\\Q4\\\\GEMINI_CLI\\\\HACKATHONS\\\\Todo-Hackathone\\\\TODO-HACKATHONE\\\\install-tools.ps1\")",
+      "Bash(docker:*)",
+      "Bash(minikube version:*)",
+      "Bash(kubectl version:*)",
+      "Bash(dir /b \"D:\\\\Izma folder\\\\Governer sindh course\\\\Q4\\\\GEMINI_CLI\\\\HACKATHONS\\\\Todo-Hackathone\\\\TODO-HACKATHONE\\\\history\\\\prompts\\\\constitution\")"
+    ]
+  }
+}
